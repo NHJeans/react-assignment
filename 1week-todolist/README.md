@@ -1,8 +1,36 @@
-# React + Vite
+<h1> My Todo List</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> 🔗프로젝트 링크 : <>
 
-Currently, two official plugins are available:
+## 폴더구조
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+📦src
+ ┣ 📂assets
+ ┃ ┣ 📜azzi.jpg
+ ┃ ┗ 📜react.svg
+ ┣ 📂components
+ ┃ ┣ 📂Header
+ ┃ ┃ ┣ 📜Header.jsx
+ ┃ ┃ ┗ 📜header.css
+ ┃ ┗ 📂Todo
+ ┃ ┃ ┣ 📂TodoContainer
+ ┃ ┃ ┃ ┗ 📜TodoContainer.jsx
+ ┃ ┃ ┣ 📂TodoForm
+ ┃ ┃ ┃ ┣ 📜TodoForm.jsx
+ ┃ ┃ ┃ ┗ 📜todoform.css
+ ┃ ┃ ┣ 📂TodoItem
+ ┃ ┃ ┃ ┣ 📜TodoItem.jsx
+ ┃ ┃ ┃ ┗ 📜todoitem.css
+ ┃ ┃ ┗ 📂TodoList
+ ┃ ┃ ┃ ┣ 📜TodoList.jsx
+ ┃ ┃ ┃ ┗ 📜todolist.css
+ ┣ 📂styles
+ ┃ ┗ 📜reset.css
+ ┣ 📜App.css
+ ┣ 📜App.jsx
+ ┣ 📜index.css
+ ┗ 📜main.jsx
+```
+
+![alt text](./public/dependency.png)

@@ -1,0 +1,90 @@
+.working-item {
+  width: 200px;
+  height: 250px;
+  background-color: white;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.working-item:hover {
+  background-color: #e0f4ff;
+}
+
+.done-item {
+  width: 200px;
+  height: 250px;
+  background-color: #a3a6a8;
+  /* padding: 10px; */
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.done-item h3,
+.done-item p {
+  color: rgb(85, 84, 84);
+}
+.done-item:hover {
+  background-color: #e0f4ff;
+}
+
+.todo-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.todo-item-buttons {
+  display: flex;
+  justify-content: end;
+  border-top: 2px solid #f8f9fa;
+}
+.todo-item h3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.todo-item p {
+  font-size: 1rem;
+}
+
+.todo-item h3,
+.todo-item p {
+  word-wrap: break-word;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  max-height: 150px;
+}
+
+.delete-button,
+.toggle-button {
+  border: none;
+  border-radius: 15px;
+  padding: 3px 5px;
+  margin: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.todo-item-content {
+  padding: 15px;
+}
+.delete-button {
+  background-color: #ff6b6b;
+  color: white;
+}
+.toggle-button {
+  background-color: #4fe3a4;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: rgb(235, 101, 101);
+}
+
+.toggle-button:hover {
+  background-color: rgb(20, 144, 132);
+}

@@ -1,0 +1,23 @@
+.working-container,
+.done-container {
+  margin: 20px 0 30px 30px;
+}
+.done-container {
+  padding-bottom: 50px;
+}
+
+.working-todo-list,
+.done-todo-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-left: 24px;
+}
+
+.working-container > p,
+.done-container > p {
+  font-size: 2rem;
+  color: #585c6c;
+  padding: 10px;
+}
