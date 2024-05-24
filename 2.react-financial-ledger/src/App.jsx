@@ -1,8 +1,6 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import Home from "./pages/Home";
-import Detail from "./pages/Detail";
+import Router from "./routes/Router";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -14,12 +12,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/detail:id" element={<Detail />} />
-        </Routes>
-      </BrowserRouter>
+      <Router />
     </>
   );
 }
