@@ -1,19 +1,39 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { useState } from "react";
 import Router from "./routes/Router";
+import GlobalStyle from "./styles/GlobalStyle";
+import fakeData from "./data/fakeData.json";
+import { BrowserRouter } from "react-router-dom";
 
-const GlobalStyle = createGlobalStyle`
-  ${reset}
-  body {
-    background-color: #f0f0f0;
-  }
-`;
 function App() {
+  const [expenses, setExpenses] = useState(fakeData);
+
+  const handleAddExpense = (newExpense) => {
+    setExpenses((prevExpenses) => [newExpense, ...prevExpenses]);
+  };
+
+  const handleDeleteExpense = (id) => {
+    setExpenses((prevExpenses) =>
+      prevExpenses.filter((expense) => expense.id !== id)
+    );
+  };
+
+  const handleUpdateExpense = (updatedExpense) => {
+    setExpenses((prevExpenses) =>
+      prevExpenses.map((expense) =>
+        expense.id === updatedExpense.id ? updatedExpense : expense
+      )
+    );
+  };
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle />
-      <Router />
-    </>
+      <Router
+        expenses={expenses}
+        handleAddExpense={handleAddExpense}
+        handleDeleteExpense={handleDeleteExpense}
+        handleUpdateExpense={handleUpdateExpense}
+      />
+    </BrowserRouter>
   );
 }
 
