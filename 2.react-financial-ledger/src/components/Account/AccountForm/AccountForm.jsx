@@ -28,7 +28,7 @@ const AccountForm = () => {
       id: crypto.randomUUID(),
       date,
       item,
-      amount,
+      amount: parseInt(amount, 10),
       description,
     };
     setExpenses((prevExpenses) => [newExpense, ...prevExpenses]);

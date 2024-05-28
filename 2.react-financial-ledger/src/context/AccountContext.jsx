@@ -7,7 +7,7 @@ const AccountContextProvider = ({ children }) => {
   const [expenses, setExpenses] = useState(fakeData);
   const [date, setDate] = useState("");
   const [item, setItem] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
   const [selectedMonth, setSelectedMonth] = useState(() => {
     const savedMonth = localStorage.getItem("month");

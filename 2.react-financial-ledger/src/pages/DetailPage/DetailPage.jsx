@@ -27,7 +27,6 @@ const DetailPage = () => {
   } = useContext(AccountContext);
   const { id } = useParams();
   const navigate = useNavigate();
-
   const [foundExpense, setFoundExpense] = useState(null);
 
   useEffect(() => {
@@ -48,6 +47,10 @@ const DetailPage = () => {
       setExpenses((prevExpenses) =>
         prevExpenses.filter((expense) => expense.id !== id)
       );
+      setDate("");
+      setItem("");
+      setAmount("");
+      setDescription("");
       navigate("/");
     }
   };
@@ -65,6 +68,10 @@ const DetailPage = () => {
         expense.id === updatedExpense.id ? updatedExpense : expense
       )
     );
+    setDate("");
+    setItem("");
+    setAmount("");
+    setDescription("");
     navigate("/");
   };
 
