@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Form, Label, Input, Button, FormContainer } from "./style";
+import { AccountContext } from "../../../context/AccountContext";
 
-const AccountForm = ({ setExpenses }) => {
+const AccountForm = () => {
+  const { setExpenses } = useContext(AccountContext);
   const [date, setDate] = useState("");
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState("");
