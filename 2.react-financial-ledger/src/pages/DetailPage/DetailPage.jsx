@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Button, DetailItem, Container } from "./DetailPage";
-import { NoData, ButtonContainer, Label, Detail } from "./style";
-import { Input } from "../../components/Account/AccountForm/style";
+import {
+  NoData,
+  ButtonContainer,
+  Label,
+  Detail,
+  Button,
+  DetailItem,
+  Container,
+  Input,
+} from "./style";
 
 const DetailPage = ({ expenses, setExpenses }) => {
   const { id } = useParams();

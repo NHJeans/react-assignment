@@ -14,25 +14,14 @@ const HomePage = ({ expenses, setExpenses }) => {
     localStorage.setItem("month", selectedMonth);
   }, [selectedMonth]);
 
-  const handleMonthChange = (newMonth) => {
-    setSelectedMonth(newMonth);
-  };
-
-  const filteredExpenses = expenses.filter(
-    (expense) => parseInt(expense.date.split("-")[1], 10) === selectedMonth
-  );
-
   return (
     <Layout>
       <AccountForm setExpenses={setExpenses} />
       <AccountSelector
         selectedMonth={selectedMonth}
-        setSelectedMonth={handleMonthChange}
+        setSelectedMonth={setSelectedMonth}
       />
-      <AccountList
-        selectedMonth={selectedMonth}
-        filteredExpenses={filteredExpenses}
-      />
+      <AccountList expenses={expenses} selectedMonth={selectedMonth} />
     </Layout>
   );
 };

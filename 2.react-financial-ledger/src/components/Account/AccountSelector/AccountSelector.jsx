@@ -8,7 +8,7 @@ const AccountSelector = ({ selectedMonth, setSelectedMonth }) => {
       {months.map((month) => (
         <Tab
           key={month}
-          isSelected={selectedMonth === month}
+          $isSelected={selectedMonth === month}
           onClick={() => {
             setSelectedMonth(month);
           }}
