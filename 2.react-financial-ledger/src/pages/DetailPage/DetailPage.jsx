@@ -13,13 +13,20 @@ import {
 } from "./style";
 
 const DetailPage = () => {
-  const { expenses, setExpenses } = useContext(AccountContext);
+  const {
+    expenses,
+    setExpenses,
+    date,
+    item,
+    amount,
+    description,
+    setDate,
+    setItem,
+    setAmount,
+    setDescription,
+  } = useContext(AccountContext);
   const { id } = useParams();
   const navigate = useNavigate();
-  const [date, setDate] = useState("");
-  const [item, setItem] = useState("");
-  const [amount, setAmount] = useState(0);
-  const [description, setDescription] = useState("");
   const [foundExpense, setFoundExpense] = useState(null);
 
   useEffect(() => {
@@ -33,13 +40,17 @@ const DetailPage = () => {
     } else {
       setFoundExpense(null);
     }
-  }, [id, expenses]);
+  }, [id, expenses, setDate, setItem, setAmount, setDescription]);
 
   const handleDelete = () => {
     if (window.confirm("정말 삭제하시겠습니까?")) {
       setExpenses((prevExpenses) =>
         prevExpenses.filter((expense) => expense.id !== id)
       );
+      setDate("");
+      setItem("");
+      setAmount("");
+      setDescription("");
       navigate("/");
     }
   };
@@ -57,6 +68,10 @@ const DetailPage = () => {
         expense.id === updatedExpense.id ? updatedExpense : expense
       )
     );
+    setDate("");
+    setItem("");
+    setAmount("");
+    setDescription("");
     navigate("/");
   };
 
