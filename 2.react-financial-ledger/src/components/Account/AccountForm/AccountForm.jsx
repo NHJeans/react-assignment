@@ -1,13 +1,19 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Form, Label, Input, Button, FormContainer } from "./style";
 import { AccountContext } from "../../../context/AccountContext";
 
 const AccountForm = () => {
-  const { setExpenses } = useContext(AccountContext);
-  const [date, setDate] = useState("");
-  const [item, setItem] = useState("");
-  const [amount, setAmount] = useState("");
-  const [description, setDescription] = useState("");
+  const {
+    setExpenses,
+    date,
+    item,
+    amount,
+    description,
+    setDate,
+    setItem,
+    setAmount,
+    setDescription,
+  } = useContext(AccountContext);
 
   const handleChange = (setter) => (e) => {
     setter(e.target.value);
