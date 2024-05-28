@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, Label, Input, Button, FormContainer } from "./style";
 
-const AccountForm = ({ addExpense }) => {
+const AccountForm = ({ setExpenses }) => {
   const [date, setDate] = useState("");
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState("");
@@ -16,14 +16,14 @@ const AccountForm = ({ addExpense }) => {
     if (!date || !item || !amount || !description) {
       return alert("모든 항목을 입력해주세요.");
     }
-    const nextAccount = {
+    const newExpense = {
       id: crypto.randomUUID(),
       date,
       item,
       amount,
       description,
     };
-    addExpense(nextAccount);
+    setExpenses((prevExpenses) => [newExpense, ...prevExpenses]);
 
     setDate("");
     setItem("");

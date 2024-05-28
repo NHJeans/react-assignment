@@ -1,13 +1,13 @@
 import AccountItem from "../AccountItem";
 import { List, NullData } from "./style";
 
-const AccountList = ({ expensesList, filteredExpenses, selectedMonth }) => {
+const AccountList = ({ filteredExpenses, selectedMonth }) => {
   return (
     <List>
       {filteredExpenses.length === 0 ? (
         <NullData>{selectedMonth}월 지출 내역이 없습니다 </NullData>
       ) : (
-        expensesList.map((expense) => (
+        filteredExpenses.map((expense) => (
           <AccountItem key={expense.id} expense={expense} />
         ))
       )}

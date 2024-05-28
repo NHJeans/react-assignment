@@ -4,7 +4,7 @@ import AccountList from "../../components/Account/AccountList";
 import AccountSelector from "../../components/Account/AccountSelector";
 import Layout from "../../components/Layout";
 
-const HomePage = ({ expenses, handleAddExpense }) => {
+const HomePage = ({ expenses, setExpenses }) => {
   const [selectedMonth, setSelectedMonth] = useState(() => {
     const savedMonth = localStorage.getItem("month");
     return savedMonth ? parseInt(savedMonth, 10) : 1;
@@ -24,13 +24,12 @@ const HomePage = ({ expenses, handleAddExpense }) => {
 
   return (
     <Layout>
-      <AccountForm addExpense={handleAddExpense} />
+      <AccountForm setExpenses={setExpenses} />
       <AccountSelector
         selectedMonth={selectedMonth}
         setSelectedMonth={handleMonthChange}
       />
       <AccountList
-        expensesList={filteredExpenses}
         selectedMonth={selectedMonth}
         filteredExpenses={filteredExpenses}
       />
