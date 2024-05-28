@@ -1,7 +1,10 @@
+import { useContext } from "react";
+import { AccountContext } from "../../../context/AccountContext";
 import AccountItem from "../AccountItem";
 import { List, NullData } from "./style";
 
-const AccountList = ({ expenses, selectedMonth }) => {
+const AccountList = () => {
+  const { expenses, selectedMonth } = useContext(AccountContext);
   const filteredExpenses = expenses.filter(
     (expense) => parseInt(expense.date.split("-")[1], 10) === selectedMonth
   );

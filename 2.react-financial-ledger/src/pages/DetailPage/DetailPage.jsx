@@ -1,17 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { AccountContext } from "../../context/AccountContext";
 import {
   NoData,
   ButtonContainer,
   Label,
   Detail,
   Button,
-  DetailItem,
-  Container,
   Input,
+  Container,
+  DetailItem,
 } from "./style";
 
-const DetailPage = ({ expenses, setExpenses }) => {
+const DetailPage = () => {
+  const { expenses, setExpenses } = useContext(AccountContext);
   const { id } = useParams();
   const navigate = useNavigate();
   const [date, setDate] = useState("");
