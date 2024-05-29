@@ -1,22 +1,22 @@
-import { useContext } from "react";
 import { Form, Label, Input, Button, FormContainer } from "./style";
-import { AccountContext } from "../../../context/AccountContext";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addExpense,
+  setDate,
+  setItem,
+  setAmount,
+  setDescription,
+} from "../../../redux/slices/expensesSlice";
 
 const AccountForm = () => {
-  const {
-    setExpenses,
-    date,
-    item,
-    amount,
-    description,
-    setDate,
-    setItem,
-    setAmount,
-    setDescription,
-  } = useContext(AccountContext);
+  const date = useSelector((state) => state.expenses.date);
+  const item = useSelector((state) => state.expenses.item);
+  const amount = useSelector((state) => state.expenses.amount);
+  const description = useSelector((state) => state.expenses.description);
+  const dispatch = useDispatch();
 
   const handleChange = (setter) => (e) => {
-    setter(e.target.value);
+    dispatch(setter(e.target.value));
   };
 
   const onSubmit = (e) => {
@@ -31,12 +31,11 @@ const AccountForm = () => {
       amount: parseInt(amount, 10),
       description,
     };
-    setExpenses((prevExpenses) => [newExpense, ...prevExpenses]);
-
-    setDate("");
-    setItem("");
-    setAmount("");
-    setDescription("");
+    dispatch(addExpense(newExpense));
+    dispatch(setDate(""));
+    dispatch(setItem(""));
+    dispatch(setAmount(""));
+    dispatch(setDescription(""));
   };
 
   return (

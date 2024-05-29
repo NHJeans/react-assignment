@@ -1,56 +1,56 @@
-import { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { AccountContext } from "../../context/AccountContext";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import {
-  NoData,
-  ButtonContainer,
-  Label,
-  Detail,
+  deleteExpense,
+  updateExpense,
+  setDate,
+  setItem,
+  setAmount,
+  setDescription,
+} from "../../redux/slices/expensesSlice";
+import {
   Button,
-  Input,
+  ButtonContainer,
   Container,
+  Detail,
   DetailItem,
+  Input,
+  Label,
+  NoData,
 } from "./style";
 
 const DetailPage = () => {
-  const {
-    expenses,
-    setExpenses,
-    date,
-    item,
-    amount,
-    description,
-    setDate,
-    setItem,
-    setAmount,
-    setDescription,
-  } = useContext(AccountContext);
   const { id } = useParams();
+  const expenses = useSelector((state) => state.expenses.expenses);
+  const date = useSelector((state) => state.expenses.date);
+  const item = useSelector((state) => state.expenses.item);
+  const amount = useSelector((state) => state.expenses.amount);
+  const description = useSelector((state) => state.expenses.description);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [foundExpense, setFoundExpense] = useState(null);
 
   useEffect(() => {
     const expense = expenses.find((item) => item.id === id);
     if (expense) {
-      setDate(expense.date);
-      setItem(expense.item);
-      setAmount(expense.amount);
-      setDescription(expense.description);
+      dispatch(setDate(expense.date));
+      dispatch(setItem(expense.item));
+      dispatch(setAmount(expense.amount));
+      dispatch(setDescription(expense.description));
       setFoundExpense(expense);
     } else {
       setFoundExpense(null);
     }
-  }, [id, expenses, setDate, setItem, setAmount, setDescription]);
+  }, [dispatch, expenses, id]);
 
   const handleDelete = () => {
     if (window.confirm("정말 삭제하시겠습니까?")) {
-      setExpenses((prevExpenses) =>
-        prevExpenses.filter((expense) => expense.id !== id)
-      );
-      setDate("");
-      setItem("");
-      setAmount("");
-      setDescription("");
+      dispatch(deleteExpense(id));
+      dispatch(setDate(""));
+      dispatch(setItem(""));
+      dispatch(setAmount(""));
+      dispatch(setDescription(""));
       navigate("/");
     }
   };
@@ -63,15 +63,11 @@ const DetailPage = () => {
       amount: parseInt(amount, 10),
       description,
     };
-    setExpenses((prevExpenses) =>
-      prevExpenses.map((expense) =>
-        expense.id === updatedExpense.id ? updatedExpense : expense
-      )
-    );
-    setDate("");
-    setItem("");
-    setAmount("");
-    setDescription("");
+    dispatch(updateExpense(updatedExpense));
+    dispatch(setDate(""));
+    dispatch(setItem(""));
+    dispatch(setAmount(""));
+    dispatch(setDescription(""));
     navigate("/");
   };
 
@@ -84,7 +80,7 @@ const DetailPage = () => {
             <Input
               type="date"
               value={date}
-              onChange={(e) => setDate(e.target.value)}
+              onChange={(e) => dispatch(setDate(e.target.value))}
             />
           </DetailItem>
           <DetailItem>
@@ -92,7 +88,7 @@ const DetailPage = () => {
             <Input
               type="text"
               value={item}
-              onChange={(e) => setItem(e.target.value)}
+              onChange={(e) => dispatch(setItem(e.target.value))}
             />
           </DetailItem>
           <DetailItem>
@@ -100,7 +96,7 @@ const DetailPage = () => {
             <Input
               type="number"
               value={amount}
-              onChange={(e) => setAmount(e.target.value)}
+              onChange={(e) => dispatch(setAmount(e.target.value))}
             />
           </DetailItem>
           <DetailItem>
@@ -108,7 +104,7 @@ const DetailPage = () => {
             <Input
               type="text"
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) => dispatch(setDescription(e.target.value))}
             />
           </DetailItem>
           <ButtonContainer>
