@@ -3,17 +3,11 @@ import HomePage from "../pages/Homepage";
 import DetailPage from "../pages/DetailPage";
 import NotFound from "../pages/NotFound";
 
-const Router = ({ expenses, setExpenses }) => {
+const Router = () => {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={<HomePage expenses={expenses} setExpenses={setExpenses} />}
-      />
-      <Route
-        path="/detail/:id"
-        element={<DetailPage expenses={expenses} setExpenses={setExpenses} />}
-      />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/detail/:id" element={<DetailPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
